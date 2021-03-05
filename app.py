@@ -195,8 +195,6 @@ def add_follow(follow_id):
     g.user.following.append(followed_user)
     db.session.commit()
 
-    # return redirect(f"/users/{g.user.id}/following")
-    ####### request.referrer puts every reload in the history #######
     return redirect(request.referrer)
 
 
@@ -211,9 +209,6 @@ def stop_following(follow_id):
     followed_user = User.query.get(follow_id)
     g.user.following.remove(followed_user)
     db.session.commit()
-
-    # return redirect(f"/users/{g.user.id}/following")
-    ####### request.referrer puts every reload in the history #######
 
     return redirect(request.referrer)
 
@@ -330,27 +325,21 @@ def messages_destroy(message_id):
 def messages_like_toggle(message_id):
     """Like/unlike a message."""
 
-    #TODO: think about splitting this into two routes - one that likes,
-    # one that unlikes. Would provide more flexibility.
-
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    if g.like_form.validate_on_submit():
-        like = Like.query.filter_by(message_id=message_id,
-                                    user_id=g.user.id).one_or_none()
+    like = Like.query.filter_by(message_id=message_id,
+                                user_id=g.user.id).one_or_none()
 
-        if like:
-            db.session.delete(like)
-        else:
-            new_like = Like(message_id=message_id, user_id=g.user.id)
-            db.session.add(new_like)
+    if like:
+        db.session.delete(like)
+    else:
+        new_like = Like(message_id=message_id, user_id=g.user.id)
+        db.session.add(new_like)
 
-        db.session.commit()
+    db.session.commit()
 
-    ####### request.referrer puts every reload in the history #######
-    # when using request.referrer have a fall back (e.g. homepage)
     return redirect(request.referrer)
 
 

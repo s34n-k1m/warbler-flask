@@ -16,12 +16,7 @@
 
       <div class="message-area">
         {% if message.user_id != g.user.id %}
-        <form
-          method="POST"
-          action="/messages/{{ message.id }}/like"
-          class="form-like-button"
-        >
-          <button class="btn like-button">
+          <button class="btn like-button" data-id="{{ message.id }}">
             {% if message in g.user.messages_liked %}
             <i class="fa-heart fas liked-message"></i>
             {% else %}
@@ -29,7 +24,6 @@
             {% endif %}
           </button>
           {{ g.like_form.hidden_tag() }}
-        </form>
         {% endif %}
         <a href="/users/{{ message.user.id }}">@{{ message.user.username }}</a>
         <span class="text-muted">
