@@ -20,6 +20,10 @@ body.error-404 {
   cursor: pointer;
 }
 
+.form-like-button {
+  display: inline;
+}
+
 /* ======================= Nav */
 
 .navbar {
@@ -282,10 +286,13 @@ nav + .container {
 .like-button {
   position: relative;
   z-index: 3;
+  padding: 0px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .liked-message {
-  color: #167bff;
+  color: #c40030;
 }
 
 #messages .list-group-item {
@@ -574,3 +581,4 @@ p.card-bio {
 .message-404 .form-inline input {
   flex: 1;
 }
+

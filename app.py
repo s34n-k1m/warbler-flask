@@ -264,7 +264,6 @@ def profile():
 def delete_user():
     """Delete user."""
 
-
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/")
