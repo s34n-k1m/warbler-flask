@@ -215,7 +215,7 @@ def stop_following(follow_id):
 
 @app.route('/users/<int:user_id>/likes')
 def show_liked_warbles(user_id):
-    """ renders page which lists all warbles liked by user """
+    """Renders page which lists all warbles liked by user """
 
     user = User.query.get_or_404(user_id)
 
@@ -357,7 +357,7 @@ def homepage():
 
     if g.user:
         ids_of_following = [user.id for user in g.user.following] + [g.user.id]
-        # ids_of_following.append(g.user.id)
+
         messages = (Message
                     .query
                     .filter(Message.user_id.in_(ids_of_following))
