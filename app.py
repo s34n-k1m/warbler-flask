@@ -263,11 +263,11 @@ def delete_user():
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    if g.delete_user_form.validate_on_submit():
-        do_logout()
+    # if g.delete_user_form.validate_on_submit():
+    do_logout()
 
-        db.session.delete(g.user)
-        db.session.commit()
+    db.session.delete(g.user)
+    db.session.commit()
 
     return redirect("/signup")
 
