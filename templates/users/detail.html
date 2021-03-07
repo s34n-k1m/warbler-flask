@@ -37,7 +37,6 @@
               {% if g.user.id == user.id %}
               <a href="/users/profile" class="btn btn-outline-secondary">Edit Profile</a>
               <form method="POST" action="/users/delete" class="form-inline">
-                <!-- {{ g.delete_user_form.hidden_tag() }} -->
                 <button class="btn btn-outline-danger ml-2">Delete Profile</button>
               </form>
               {% elif g.user %}

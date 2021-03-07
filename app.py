@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
-db.create_all()
+# db.create_all()
 
 
 ##############################################################################
@@ -41,7 +41,6 @@ def add_user_to_g():
         g.user = User.query.get(session[CURR_USER_KEY])
         g.logout_form = LogoutForm()
         g.like_form = LikeMessageForm()
-        g.delete_user_form = DeleteUserForm()
 
     else:
         g.user = None
@@ -263,7 +262,6 @@ def delete_user():
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    # if g.delete_user_form.validate_on_submit():
     do_logout()
 
     db.session.delete(g.user)
