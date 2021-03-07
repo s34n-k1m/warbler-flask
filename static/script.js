@@ -1,7 +1,7 @@
 "use strict";
 
 const $likeBtns = $(".like-button");
-const BASE_URL = "http://127.0.0.1:5000";
+const BASE_URL = "https://seankim-warbler.herokuapp.com";
 
 /* Function makes a post request to /messages/{id}/like 
 -adds like or deletes like from likes table */
