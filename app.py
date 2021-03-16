@@ -93,11 +93,16 @@ def signup():
         return render_template('users/signup.html', form=form)
 
 
+class DefaultValueForLogin(object):
+    username = "demouser"
+    password = "demopassword"
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
     """Handle user login."""
-
-    form = LoginForm()
+    
+    default_value = DefaultValueForLogin()
+    form = LoginForm(obj=default_value)
 
     if form.validate_on_submit():
         user = User.authenticate(form.username.data,

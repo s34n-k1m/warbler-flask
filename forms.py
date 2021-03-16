@@ -34,7 +34,8 @@ class LoginForm(FlaskForm):
     """Login form."""
 
     username = StringField('Username', validators=[InputRequired()])
-    password = PasswordField('Password', validators=[Length(min=6)])
+    # password set to StringField so password can be set to a default value for demo purposes
+    password = StringField('Password', validators=[Length(min=6)])
 
 
 class LogoutForm(FlaskForm):
